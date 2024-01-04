@@ -22,33 +22,32 @@ const arrowLeft = document.getElementById("arrow_Left");
 const imgSelected = document.getElementById("img-selected");
 const textSelected = document.getElementById("text");
 let index = 0;
-const Dot0 = document.getElementById("dot0");
-const Dot1 = document.getElementById("dot1");
-const Dot2 = document.getElementById("dot2");
-const Dot3 = document.getElementById("dot3");
+
+const Dots = document.getElementsByClassName("dot");
 
 
 arrowRight.onclick = function() {
+
+	Dots[index].className="dot";
+	//  Fait passer un tableau d'index à "Dots" puis, remplace la class par "dot".
 	index +=1;
+	// 	On incrémente de +1 à chaque clique.
 	if (index === 4) {index = 0};
 	imgSelected.src = "assets/images/slideshow/" + slides[index].image;
+	// 	On remplace "src" de l'image selectionné par : "le chemin" + "le nom de l'image" par rapport à l'index dans le tableau slides.
 	textSelected.innerHTML = slides[index].tagLine;
-	for (i=0;i<slides.length;i++) {
-		eval('Dot'+i+'.className = "dot"')
-	};
-	eval('Dot'+index+'.className = "dot dot_selected"');
-	console.log(index);
+	// 	On génére/remplace le texte par : le texte dans le tableau slides par rapport à l'index.
+	Dots[index].className="dot dot_selected";
+	//  Fait passer un tableau d'index à "Dots" puis, remplace les class par "dot dot_selected".
 };
 
 arrowLeft.onclick = function() {
+
+	Dots[index].className="dot";
 	index -=1;
 	if (index === -1) {index = 3};
 	imgSelected.src = "assets/images/slideshow/" + slides[index].image;
 	textSelected.innerHTML = slides[index].tagLine;
-	for (i=0;i<slides.length;i++) {
-		eval('Dot'+i+'.className = "dot"')
-	};
-	eval('Dot'+index+'.className = "dot dot_selected"');
-	console.log(index);
+	Dots[index].className="dot dot_selected";
 };
 
